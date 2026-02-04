@@ -1,8 +1,13 @@
 <template>
-  <div class="demo-page">
-    <text class="title">{{ $t("a.b") }},欢迎打开{{ title }}</text>
-    <!-- 点击跳转详情页 -->
-    <input class="btn" type="button" value="跳转到详情页" onclick="routeDetail" />
+  <div class="page">
+    <swiper class="swiper" vertical="true">
+      <div class="title" style="width: 100%;">
+        <text style="color: white;text-align: center;width: 100%;margin-top: 200px;">page1</text>
+      </div>
+      <div class="title" style="width: 100%;">
+        <text style="color: white;text-align: center;width: 100%;margin-top: 200px;">page2</text>
+      </div>
+    </swiper>
   </div>
 </template>
 
@@ -25,24 +30,12 @@ export default {
 </script>
 
 <style>
-.demo-page {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.title {
-  font-size: 20px;
-  text-align: center;
-}
-
-.btn {
-  width: 200px;
-  height: 40px;
-  margin-top: 20px;
-  border-radius: 5px;
-  background-color: #09ba07;
-  font-size: 20px;
-  color: #ffffff;
+.swiper {
+  height: 100%;
+  width: 100%;
+  indicator-right: 6px;
+  indicator-size: 16px;
+  indicator-color: rgba(255, 255, 255, 0.25);
+  indicator-selected-color: rgba(255, 255, 255);
 }
 </style>

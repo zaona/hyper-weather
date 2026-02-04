@@ -1,5 +1,5 @@
 {
-  "package": "com.application.watch.demo",
+  "package": "top.zaona.weather.hyper",
   "name": "hyper-weather",
   "versionName": "1.0.0",
   "versionCode": 1,
@@ -22,9 +22,6 @@
     "pages": {
       "pages/index": {
         "component": "index"
-      },
-      "pages/detail": {
-        "component": "detail"
       }
     }
   }
