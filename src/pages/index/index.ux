@@ -38,6 +38,7 @@
             </div>
           </div>
         </div>
+
         <div class="section">
           <div class="title-bar">
             <text class="title-bar__text">天气预测</text>
@@ -66,13 +67,25 @@
             <div class="progress-bar__bg"><div class="progress-bar__fill"></div></div>
           </div>
         </div>
+
         <div class="section">
-          <div class="title" style="width: 100%">
-            <text style="color: white; text-align: center; width: 100%; margin-top: 200px">
-              page3
-            </text>
+          <div class="title-bar">
+            <text class="title-bar__text">未来天气</text>
+            <text class="title-bar__time">14:45</text>
+          </div>
+          <div class="forcast-daily">
+            <div class="forcast-daily__item" for="(item, index) in forecastDaily">
+              <div>
+                <img class="forcast-daily__icon" src="{{ forecastDaily[0].icon }}" />
+                <text class="forcast-daily__time">{{ forecastDaily[0].time }}</text>
+              </div>
+              <text class="forcast-daily__temperature">
+                {{ forecastDaily[0].temperature.from }}°/{{ forecastDaily[0].temperature.to }}°
+              </text>
+            </div>
           </div>
         </div>
+
         <div class="section">
           <div class="title" style="width: 100%">
             <text style="color: white; text-align: center; width: 100%; margin-top: 200px">
@@ -112,27 +125,25 @@ export default {
         wind: "1级",
         aqi: "132"
       },
+      {},
+      {},
+      {}
+    ],
+    forecastDaily: [
       {
-        time: "现在",
-        temperature: "3",
         icon: "/common/i/i_npcloudy.png",
-        wind: "1级",
-        aqi: "132"
+        time: "今天",
+        temperature: {
+          from: "0",
+          to: "9"
+        }
       },
-      {
-        time: "现在",
-        temperature: "3",
-        icon: "/common/i/i_npcloudy.png",
-        wind: "1级",
-        aqi: "132"
-      },
-      {
-        time: "现在",
-        temperature: "3",
-        icon: "/common/i/i_npcloudy.png",
-        wind: "1级",
-        aqi: "132"
-      }
+      {},
+      {},
+      {},
+      {},
+      {},
+      {}
     ]
   },
 
@@ -257,7 +268,7 @@ export default {
 
 .title-bar {
   width: 100%;
-  padding: 15px 48px 30px 43px;
+  padding: 15px 48px 24px 43px;
   justify-content: space-between;
 }
 
@@ -274,7 +285,7 @@ export default {
 }
 
 .forcast-hourly {
-  margin-top: 16px;
+  margin-top: 22px;
   width: 100%;
 }
 
@@ -349,5 +360,30 @@ export default {
   border-radius: 50%;
   position: absolute;
   left: 20px;
+}
+
+.forcast-daily {
+  width: 100%;
+  padding: 0 32px;
+  flex-direction: column;
+}
+
+.forcast-daily__item {
+  align-items: center;
+  margin-bottom: 12px;
+  justify-content: space-between;
+}
+
+.forcast-daily__time {
+  margin-left: 16px;
+  line-height: 32px;
+  font-size: 32px;
+  color: white;
+}
+
+.forcast-daily__temperature {
+  line-height: 30px;
+  font-size: 30px;
+  color: white;
 }
 </style>
