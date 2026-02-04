@@ -1,13 +1,66 @@
 <template>
   <div class="page">
-    <swiper class="swiper" vertical="true">
-      <div class="title" style="width: 100%;">
-        <text style="color: white;text-align: center;width: 100%;margin-top: 200px;">page1</text>
-      </div>
-      <div class="title" style="width: 100%;">
-        <text style="color: white;text-align: center;width: 100%;margin-top: 200px;">page2</text>
-      </div>
-    </swiper>
+    <stack>
+      <img src="/common/weather/weather8.png" />
+      <img src="/common/weather/weather23.png" />
+      <swiper class="swiper" vertical="true" loop="false">
+        <div class="section">
+          <div class="title">
+            <text class="title__location">
+              {{ current.location }}
+            </text>
+            <text class="title__time">
+              {{ current.time }}
+            </text>
+          </div>
+          <div class="current">
+            <div style="margin-left: 16px">
+              <text class="current__temperature">
+                {{ current.temperature }}
+              </text>
+              <text class="current__temperature__unit">°</text>
+            </div>
+            <text class="current__weather">
+              {{ current.weather }}
+            </text>
+            <text class="current__daily">
+              {{ current.temperatureDaily.from }}°/{{ current.temperatureDaily.to }}°
+            </text>
+          </div>
+          <div class="alert">
+            <div class="alert__card" style="margin-bottom: 8px">
+              <img src="/common/airp/airp1.png" />
+              <text class="alert__text">{{ current.aqi }}</text>
+            </div>
+            <div class="alert__card">
+              <img src="/common/war.png" />
+              <text class="alert__text">{{ current.alert }}</text>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="title" style="width: 100%">
+            <text style="color: white; text-align: center; width: 100%; margin-top: 200px">
+              page2
+            </text>
+          </div>
+        </div>
+        <div class="section">
+          <div class="title" style="width: 100%">
+            <text style="color: white; text-align: center; width: 100%; margin-top: 200px">
+              page3
+            </text>
+          </div>
+        </div>
+        <div class="section">
+          <div class="title" style="width: 100%">
+            <text style="color: white; text-align: center; width: 100%; margin-top: 200px">
+              page4
+            </text>
+          </div>
+        </div>
+      </swiper>
+    </stack>
   </div>
 </template>
 
@@ -17,7 +70,19 @@ import router from "@system.router"
 export default {
   // 页面级组件的数据模型，影响传入数据的覆盖机制：private内定义的属性不允许被覆盖
   private: {
-    title: "示例页面"
+    title: "首页",
+    current: {
+      location: "北京",
+      time: "20 分钟前更新",
+      temperature: "3",
+      weather: "多云",
+      temperatureDaily: {
+        from: "0",
+        to: "9"
+      },
+      aqi: "空气优 43",
+      alert: "大风蓝色预警"
+    }
   },
 
   routeDetail() {
@@ -37,5 +102,105 @@ export default {
   indicator-size: 16px;
   indicator-color: rgba(255, 255, 255, 0.25);
   indicator-selected-color: rgba(255, 255, 255);
+}
+
+.section {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+
+.title {
+  flex-shrink: 0;
+  margin-top: 26px;
+  width: 100%;
+  flex-direction: column;
+}
+
+.title__location {
+  width: 100%;
+  line-height: 32px;
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.title__time {
+  margin-top: 12px;
+  line-height: 24px;
+  width: 100%;
+  font-size: 24px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+}
+
+.current {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.current__temperature {
+  line-height: 120px;
+  font-size: 120px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.current__temperature__unit {
+  height: 64px;
+  margin-top: 4px;
+  line-height: 64px;
+  font-size: 64px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+.current__weather {
+  margin-top: 16px;
+  line-height: 32px;
+  width: 100%;
+  font-size: 32px;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+}
+
+.current__daily {
+  margin-top: 14px;
+  margin-left: 3px;
+  line-height: 32px;
+  width: 100%;
+  font-size: 32px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+}
+
+.alert {
+  margin-bottom: 22px;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+}
+
+.alert__card {
+  padding: 8px 16px 8px 12px;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+}
+
+.alert__text {
+  margin-top: 3px;
+  margin-left: 5px;
+  line-height: 25px;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
 }
 </style>
