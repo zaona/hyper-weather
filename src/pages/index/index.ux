@@ -39,10 +39,31 @@
           </div>
         </div>
         <div class="section">
-          <div class="title" style="width: 100%">
-            <text style="color: white; text-align: center; width: 100%; margin-top: 200px">
-              page2
-            </text>
+          <div class="title-bar">
+            <text class="title-bar__text">天气预测</text>
+            <text class="title-bar__time">14:45</text>
+          </div>
+          <scroll class="forcast-hourly" scroll-x="true" bounces="true">
+            <div style="padding-right: 16px">
+              <div class="forcast-hourly__item" for="(item, index) in forecastHourly">
+                <text class="forcast-hourly__time">{{ forecastHourly[0].time }}</text>
+                <text class="forcast-hourly__temperature">
+                  {{ forecastHourly[0].temperature }}°
+                </text>
+                <img class="forcast-hourly__icon" src="{{ forecastHourly[0].icon }}" />
+                <div class="forcast-hourly__wind__card">
+                  <img src="/common/fx/fx3.png" />
+                  <text class="forcast-hourly__wind__text">{{ forecastHourly[0].wind }}</text>
+                </div>
+                <div class="forcast-hourly__aqi__card">
+                  <img src="/common/airp/airp03.png" />
+                  <text class="forcast-hourly__aqi__text">{{ forecastHourly[0].aqi }}</text>
+                </div>
+              </div>
+            </div>
+          </scroll>
+          <div class="progress-bar">
+            <div class="progress-bar__bg"><div class="progress-bar__fill"></div></div>
           </div>
         </div>
         <div class="section">
@@ -82,7 +103,37 @@ export default {
       },
       aqi: "空气优 43",
       alert: "大风蓝色预警"
-    }
+    },
+    forecastHourly: [
+      {
+        time: "现在",
+        temperature: "3",
+        icon: "/common/i/i_npcloudy.png",
+        wind: "1级",
+        aqi: "132"
+      },
+      {
+        time: "现在",
+        temperature: "3",
+        icon: "/common/i/i_npcloudy.png",
+        wind: "1级",
+        aqi: "132"
+      },
+      {
+        time: "现在",
+        temperature: "3",
+        icon: "/common/i/i_npcloudy.png",
+        wind: "1级",
+        aqi: "132"
+      },
+      {
+        time: "现在",
+        temperature: "3",
+        icon: "/common/i/i_npcloudy.png",
+        wind: "1级",
+        aqi: "132"
+      }
+    ]
   },
 
   routeDetail() {
@@ -98,8 +149,8 @@ export default {
 .swiper {
   height: 100%;
   width: 100%;
-  indicator-right: 6px;
-  indicator-size: 16px;
+  indicator-right: 4px;
+  indicator-size: 14px;
   indicator-color: rgba(255, 255, 255, 0.25);
   indicator-selected-color: rgba(255, 255, 255);
 }
@@ -202,5 +253,101 @@ export default {
   font-size: 25px;
   font-weight: bold;
   color: white;
+}
+
+.title-bar {
+  width: 100%;
+  padding: 15px 48px 30px 43px;
+  justify-content: space-between;
+}
+
+.title-bar__text {
+  line-height: 32px;
+  font-size: 32px;
+  color: white;
+}
+
+.title-bar__time {
+  line-height: 33px;
+  font-size: 33px;
+  color: white;
+}
+
+.forcast-hourly {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.forcast-hourly__item {
+  flex-direction: column;
+  align-items: center;
+  margin-left: 16px;
+}
+
+.forcast-hourly__time {
+  line-height: 28px;
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.forcast-hourly__temperature {
+  margin-top: 42px;
+  line-height: 28px;
+  font-size: 28px;
+  color: white;
+}
+
+.forcast-hourly__icon {
+  margin-top: 38px;
+}
+
+.forcast-hourly__wind__card {
+  margin-top: 36px;
+  align-items: center;
+}
+
+.forcast-hourly__wind__text {
+  margin-left: 1px;
+  line-height: 28px;
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.forcast-hourly__aqi__card {
+  margin-top: 38px;
+  align-items: center;
+  padding: 2px 9px 2px 2px;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+}
+
+.forcast-hourly__aqi__text {
+  margin-left: 1px;
+  line-height: 24px;
+  font-size: 24px;
+  color: white;
+}
+
+.progress-bar {
+  margin-top: 54px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progress-bar__bg {
+  width: 100px;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  position: relative;
+}
+
+.progress-bar__fill {
+  width: 50px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  left: 20px;
 }
 </style>
