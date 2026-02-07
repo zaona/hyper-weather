@@ -254,6 +254,8 @@
                 </text>
               </div>
             </div>
+
+            <text class="indices__time">{{ current.time }}</text>
           </scroll>
         </div>
       </swiper>
@@ -626,5 +628,14 @@ export default {
   layer-color: rgba(255, 255, 255, 0.6);
   color: white;
   stroke-width: 10px;
+}
+
+.indices__time {
+  margin-top: 16px;
+  margin-bottom: 28px;
+  line-height: 28px;
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
 }
 </style>
